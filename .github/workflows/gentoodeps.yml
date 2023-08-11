@@ -25,7 +25,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           repository: 'hashicorp/terraform'
-          # path: 'task'
+          path: 'terraform'
           fetch-depth: 0
 
       # - name: Fetch tags
@@ -52,8 +52,8 @@ jobs:
         run: go mod vendor
         working-directory: ./terraform
 
-      # - name: Rename upstream dir
-      #   run: mv task task-"${{env.short_tag}}"
+      - name: Rename upstream dir
+        run: mv terraform terraform-"${{env.short_tag}}"
 
       - name: Create deps tarball
         run: tar --create --auto-compress --file terraform-${{ env.upstream_tag }}-deps.tar.xz terraform-${{ env.short_tag }}/vendor
