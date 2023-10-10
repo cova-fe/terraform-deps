@@ -19,7 +19,7 @@ jobs:
       - name: Set up Go
         uses: actions/setup-go@v3
         with:
-          go-version: 1.20.x
+          go-version: 1.23.x
 
       - name: Checkout Upstream
         uses: actions/checkout@v3
@@ -27,10 +27,6 @@ jobs:
           repository: 'hashicorp/terraform'
           path: 'terraform'
           fetch-depth: 0
-
-      # - name: Fetch tags
-      #   working-directory: ./task
-      #   run: git fetch --tags
 
       - name: Find latest tag and set variables
         working-directory: ./terraform
